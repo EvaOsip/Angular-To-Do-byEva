@@ -4,6 +4,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {TodoType} from "../../../../types/todo.type";
 import {ActiveParamsType} from "../../../../types/active-params.type";
 import {Subscription} from "rxjs";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-filter',
@@ -13,7 +14,8 @@ import {Subscription} from "rxjs";
 export class FilterComponent implements OnInit, OnDestroy {
   constructor(private toDoService: ToDoService,
               private activatedRoute: ActivatedRoute,
-              private router: Router,) {
+              private router: Router,
+              private _snackBar: MatSnackBar) {
   }
 
   subscription: Subscription | null = null;
@@ -43,8 +45,10 @@ export class FilterComponent implements OnInit, OnDestroy {
     this.toDoService.getFilterItems()
       .subscribe({
         next: (items: string[] | null) => {
-          if (items) {
+          if (items && items.length > 0) {
             this.sortingOptions = items;
+          } else {
+            this._snackBar.open('Для сортировки задач добавляйте в них хештеги')
           }
         },
         error: (error) => {

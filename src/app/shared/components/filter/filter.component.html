@@ -1,7 +1,7 @@
 <div class="filter-block">
   <div class="filter" [class.open]="sortingOpen" (click)="toggleSorting()">
     <div class="filter-head" (click)="filter()">Фильтр по тегам</div>
-    <div class="filter-items" *ngIf="sortingOptions">
+    <div class="filter-items" *ngIf="sortingOptions && sortingOptions.length > 0">
       <label class="filter-item" *ngFor="let sortingOption of sortingOptions">
         <input type="checkbox" #input
                [checked]="activeParams.types.includes(sortingOption)"
