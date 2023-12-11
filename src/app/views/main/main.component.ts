@@ -100,10 +100,11 @@ export class MainComponent implements OnInit, OnDestroy {
       next: (data: TodoType[] | null) => {
         if(data && data.length > 0) {
           this.todoList = data;
-          this.activeParams.types = [];
-          this.router.navigate(['/'], {queryParams: this.activeParams});
+        } else if (data && data.length < 1) {
+          this.todoList = [];
         }
-
+        this.activeParams.types = [];
+        this.router.navigate(['/'], {queryParams: this.activeParams});
       }, error: (error) => {
         console.error(error);
       }
