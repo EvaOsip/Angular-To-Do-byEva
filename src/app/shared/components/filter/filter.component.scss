@@ -1,0 +1,115 @@
+.filter-block {
+  display: flex;
+  align-items: center;
+
+  .filter {
+    width: 210px;
+    position: relative;
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .filter-head {
+      width: 100%;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #AC3B61;
+      border-radius: 5px;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 18px;
+      box-sizing: border-box;
+      border: 2px solid #ffffff;
+    }
+
+    .filter-items {
+      flex-direction: column;
+      gap: 10px;
+      position: absolute;
+      max-height: 300px;
+      width: 100%;
+      box-sizing: border-box;
+      z-index: 3;
+      display: none;
+      padding: 12px 23px;
+      background: #ffffff;
+      border-radius: 0 0 5px 5px;
+      line-height: 1;
+      top: 40px;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      .filter-item {
+        cursor: pointer;
+        color: #AC3B61;
+        overflow: hidden;
+        padding: 5px 0;
+
+        input[type="checkbox"] {
+          display: none;
+        }
+
+        span {
+          display: inline-block;
+          padding-left: 30px;
+          position: relative;
+        }
+
+        input[type="checkbox"] + span:before {
+          content: '\2713';
+          color: #ffffff;
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 17px;
+          height: 17px;
+          border: 1px solid #AC3B61;
+          border-radius: 3px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+        }
+
+        input[type="checkbox"]:checked + span:before {
+          background-color: #AC3B61;
+        }
+      }
+    }
+
+    &.open {
+      .filter-head {
+        border-radius: 5px 5px 0 0;
+      }
+
+      .filter-items {
+        display: flex;
+      }
+    }
+  }
+
+  .filter-button {
+    width: 109px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 5px;
+    color: #AC3B61;
+    cursor: pointer;
+    font-size: 18px;
+    box-sizing: border-box;
+    border: 2px solid #AC3B61;
+  }
+
+}
+
+
+

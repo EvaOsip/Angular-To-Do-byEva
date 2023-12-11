@@ -1,0 +1,12 @@
+<section class="edit-task">
+  <div class="container">
+    <div class="edit-item" *ngIf="todo">
+      <input class="edit-item-input" contenteditable="true" (keyup)="change($event)" [value]="text" autofocus>
+    </div>
+    <div class="edit-item-actions">
+      <button class="edit-item-button-save" (click)="editTask()">Сохранить</button>
+      <button class="edit-item-button-cancel" [routerLink]="['/']">Отменить</button>
+    </div>
+  </div>
+</section>
+

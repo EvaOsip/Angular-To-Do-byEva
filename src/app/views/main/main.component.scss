@@ -1,0 +1,119 @@
+.main {
+  min-height: 100%;
+  background: #EEE2DC;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .main-input-block {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+
+      .input {
+        width: 80%;
+        height: 50px;
+        border: 3px solid #ffffff;
+        font-size: 18px;
+        padding: 10px 5px;
+        color: #AC3B61;
+        border-radius: 5px;
+        background: white;
+        margin-right: 30px;
+        box-sizing: border-box;
+        outline: none;
+
+        &::placeholder {
+          color: #BAB2B5;
+        }
+      }
+
+      .main-button {
+        background: #AC3B61;
+        width: 58px;
+        height: 58px;
+        color: #ffffff;
+        cursor: pointer;
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+        font-size: 30px;
+      }
+    }
+
+    .hashtags {
+      display: flex;
+      margin-bottom: 10px;
+
+      .hashtag {
+        color: red;
+        margin-right: 10px;
+        border: 1px solid white;
+        padding: 3px;
+        max-width: 200px;
+        overflow: hidden;
+      }
+    }
+
+    .main-items {
+      align-self: flex-start;
+      width: 100%;
+
+      .main-item {
+        display: flex;
+        height: 50px;
+        padding: 10px;
+        box-sizing: border-box;
+        gap: 50px;
+        margin-bottom: 20px;
+        border: 2px solid #BAB2B5;
+        border-radius: 5px;
+        align-items: center;
+        justify-content: space-between;
+        background: #EEE2DC;
+        color: #AC3B61;
+        overflow: hidden;
+
+        .main-item-text {
+          width: 80%;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        .main-actions {
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
+
+
+          .main-item-button {
+            background: #EEE2DC;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+              width: 100%;
+
+              path {
+                stroke: #AC3B61;;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
