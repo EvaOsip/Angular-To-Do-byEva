@@ -27,8 +27,8 @@ export class FilterComponent implements OnInit, OnDestroy {
   activeParams: ActiveParamsType = {types: []};
 
   @HostListener('document:click', ['$event'])
-  click(event: Event) {
-    if (this.sortingOpen && (event.target as HTMLElement).className.indexOf('filter') === -1) {
+  click(event: MouseEvent) {
+    if (this.sortingOpen && event.target instanceof HTMLElement && event.target.className.indexOf('filter') === -1) {
       this.sortingOpen = false;
     }
   }
@@ -48,6 +48,7 @@ export class FilterComponent implements OnInit, OnDestroy {
           if (items && items.length > 0) {
             this.sortingOptions = items;
           } else {
+            this.sortingOptions = [];
             this._snackBar.open('Для сортировки задач добавляйте в них хештеги')
           }
         },

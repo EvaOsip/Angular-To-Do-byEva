@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ToDoService} from "../../shared/services/to-do.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {TodoType} from "../../../types/todo.type";
-import {Subscription} from "rxjs";
+import {Subscription, switchMap} from "rxjs";
 import {ActiveParamsType} from "../../../types/active-params.type";
 
 @Component({
@@ -84,6 +84,7 @@ export class MainComponent implements OnInit, OnDestroy {
               this.text = '';
               this.activeParams.types = [];
               this.router.navigate(['/'], {queryParams: this.activeParams});
+              this.hashtags = [];
             }
           }, error: (error) => {
             console.error(error);
@@ -93,16 +94,20 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   deleteTask(id: number) {
-    this.toDoService.delete(id)
-      .subscribe({
-        next: (data: TodoType[]) => {
+    this.toDoService.delete(id).pipe(
+      switchMap(() => this.toDoService.getTodoListFromLocalStorage()),
+    ).subscribe({
+      next: (data: TodoType[] | null) => {
+        if(data && data.length > 0) {
           this.todoList = data;
           this.activeParams.types = [];
           this.router.navigate(['/'], {queryParams: this.activeParams});
-        }, error: (error) => {
-          console.error(error);
         }
-      })
+
+      }, error: (error) => {
+        console.error(error);
+      }
+    })
   }
 
 
